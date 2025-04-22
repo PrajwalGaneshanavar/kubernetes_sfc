@@ -27,7 +27,7 @@ kubectl create -f deployments/gateway_deployment.yaml
 
 # Create SFC
 # TODO: we need to customize the node selector!
-kubectl create -f sfc/sfc.yaml
+kubectl create -f sfc_file/sfc.yaml
 
 ### SHELL 1 ###
 # Enter client pod
