@@ -15,8 +15,10 @@ spec:
         servicefunctionchain.polito.it/networkFunction: gw
     spec:
       containers:
-      - name: alpine
-        image: fmonaco96/iperf3-server
+        - name: alpine
+          image: fmonaco96/iperf3-server
+          securityContext:
+            privileged: true
       terminationGracePeriodSeconds: 2
-      nodeSelector: # Set the node name
+      nodeSelector:# Set the node name
         # kubernetes.io/hostname: node1

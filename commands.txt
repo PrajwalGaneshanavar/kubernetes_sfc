@@ -2,9 +2,7 @@
 sudo apt-get install linux-headers-$(uname -r)
 
 # Install calico CNI plugin (if not installed)
-# kubectl create -f ./test-cluster/calico.yaml
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.4/manifests/calico.yaml
-# kubectl -n kube-system set env daemonset/calico-node FELIX_IGNORELOOSERPF=true
 
 # Install multus CNI
 kubectl apply -f https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/master/deployments/multus-daemonset.yml
@@ -47,7 +45,4 @@ ping 10.240.0.254
 # (in the other shell runing the firewall monitor, we can see packets passing in all instances)
 iperf3 -c 10.240.0.254 -P 10 -t 5
 
-### SHELL 3 ###
-# Scale firewall deployment (from another shell)
-kubectl scale --replicas=3 deployment.apps/firewall-deployment
 
