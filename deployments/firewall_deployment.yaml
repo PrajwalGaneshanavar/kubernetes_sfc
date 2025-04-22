@@ -3,7 +3,7 @@ apiVersion: apps/v1
 metadata:
   name: firewall-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       servicefunctionchain.polito.it/networkFunction: firewall
@@ -15,13 +15,13 @@ spec:
         servicefunctionchain.polito.it/networkFunction: firewall
     spec:
       containers:
-      - name: firewall
-        image: fmonaco96/iptables-firewall:latest
-        imagePullPolicy: IfNotPresent
-        command: [ "/setup-iptables-firewall.sh" ]
-        args: [ "eth1", "eth2" ]
-        securityContext:
-          privileged: true
+        - name: firewall
+          image: fmonaco96/iptables-firewall:latest
+          imagePullPolicy: IfNotPresent
+          command: ["/setup-iptables-firewall.sh"]
+          args: ["eth1", "eth2"]
+          securityContext:
+            privileged: true
       terminationGracePeriodSeconds: 2
-      nodeSelector: # Set the node name
+      nodeSelector:# Set the node name
         # kubernetes.io/hostname: node1
