@@ -23,5 +23,5 @@ spec:
           securityContext:
             privileged: true
       terminationGracePeriodSeconds: 2
-      nodeSelector:# Set the node name
+      nodeSelector: # Set the node name
         # kubernetes.io/hostname: node1
