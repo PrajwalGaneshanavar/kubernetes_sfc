@@ -8,26 +8,26 @@ kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.4/
 kubectl apply -f https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/master/deployments/multus-daemonset.yml
 
 # Install sfc operator 
-kubectl create -f operator/sfc_crd.yaml
-kubectl create -f operator/sfc_lb.yaml
-kubectl create -f operator/rbac.yaml
-kubectl create -f operator/daemonset.yaml
+kubectl apply -f operator/sfc_crd.yaml
+kubectl apply -f operator/sfc_lb.yaml
+kubectl apply -f operator/rbac.yaml
+kubectl apply -f operator/daemonset.yaml
 
 # Create NetworkAttachmentDefinition CRDs
-kubectl create -f NAD_crd/sfc_client.yaml
-kubectl create -f NAD_crd/sfc_firewall_1.yaml
-kubectl create -f NAD_crd/sfc_firewall_2.yaml
-kubectl create -f NAD_crd/sfc_gateway.yaml
+kubectl apply -f NAD_crd/sfc_client.yaml
+kubectl apply -f NAD_crd/sfc_firewall_1.yaml
+kubectl apply -f NAD_crd/sfc_firewall_2.yaml
+kubectl apply -f NAD_crd/sfc_gateway.yaml
 
 # Deploy NFs pods
 # TODO: we need to customize the node selector!
-kubectl create -f deployments/client_deployment.yaml
-kubectl create -f deployments/firewall_deployment.yaml
-kubectl create -f deployments/gateway_deployment.yaml
+kubectl apply -f deployments/client_deployment.yaml
+kubectl apply -f deployments/firewall_deployment.yaml
+kubectl apply -f deployments/gateway_deployment.yaml
 
 # Create SFC
 # TODO: we need to customize the node selector!
-kubectl create -f sfc_file/sfc.yaml
+kubectl apply -f sfc_file/sfc.yaml
 
 ### SHELL 1 ###
 # Enter client pod
